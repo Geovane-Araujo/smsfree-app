@@ -7,7 +7,7 @@
     <section>
       <div>
         <div class="nav">
-          <h1>SMS Fr<spam style="color: #332548">ee</spam></h1>
+          <h1>SMS <spam style="color: #622774">Free</spam></h1>
           <p id="par">Pra que pagar uma api se você pode usar os torpedos gratuitos de sua operadora para enviar mensagens promocionais</p>
         </div>
       </div>
@@ -40,7 +40,7 @@ export default {
       })
     },
     login () {
-      this.$router.push('login')
+      this.$router.push('dashboard')
     },
     cadastro () {
       this.$router.push('cadastro')
@@ -54,14 +54,16 @@ h1{
   font-size: 140px;
   font-family: "Ubuntu";
   margin-left: 50px;
+  color:white;
 }
 p{
   font-size: 20px;
   margin-left: 50px;
+  color:white;
 }
 p::after{
   content: "|";
-  color: #b172c2;
+  color:white;
   margin-left: 5px;
   opacity: 1;
   animation: piscadinha .7s infinite;

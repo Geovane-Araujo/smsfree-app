@@ -1,6 +1,7 @@
 import Home from '../views/Home.vue'
 import Cadastro from '../views/Cadastro.vue'
 import Security from '../security/login.vue'
+import DashBoard from '../views/DashBoard.vue'
 
 const routes = [
   {
@@ -17,6 +18,11 @@ const routes = [
     path: '/cadastro',
     name: 'Cadastro',
     component: Cadastro
+  },
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: DashBoard
   }
 ]
 
