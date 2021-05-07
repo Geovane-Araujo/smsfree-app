@@ -13,22 +13,19 @@
         <div class="col-sm-12">
           <div class="card-left">
             <div class="sts">
-              <h2>Olá Geovane Araújo</h2>
+              <div class="row">
+                <div class="col-sm-4">
+                  <h2>Olá Geovane Araújo...</h2>
+                  <div style="margin-top:50px" class="col sm-12">
+                    <h4>Token</h4>
+                    <p>s5d4s5sdsadasdhg===</p>
+                  </div>
+                </div>
+                <div class="smsrigt col-sm-8">
+                  <img src="../assets/img/homens.png" alt="">
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div style="margin-top: 10px" class="row">
-        <div class="col-sm-4">
-          <div class="card-left">
-            <div class="smscenter">
-              <h2>Token</h2>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-8">
-          <div class="card-botton">
-            <h2>Ultimos Enviados</h2>
           </div>
         </div>
       </div>
@@ -51,11 +48,12 @@ h1{
 }
 .sts{
   font-family: 'ubuntu';
+  margin-top: 10px;
+  padding: 20px;
 }
 .card-left{
   background-color: white;
   border-radius: 20px;
-  height: 300px;
 }
 .card-botton{
   background-color: white;
