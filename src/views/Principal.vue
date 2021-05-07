@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="principal">
     <div style="margin-top: 10px" class="p-d-flex p-jc-between">
       <div>
         <H1>DashBoard</H1>
@@ -22,7 +22,7 @@
                   </div>
                 </div>
                 <div class="smsrigt col-sm-8">
-                  <img src="../assets/img/homens.png" alt="">
+                  <img src="../assets/img/aha.png" alt="">
                 </div>
               </div>
             </div>
@@ -59,5 +59,9 @@ h1{
   background-color: white;
   border-radius: 20px;
   height: 300px;
+}
+.principal{
+  overflow:hidden;
+  height: auto;
 }
 </style>
