@@ -2,6 +2,7 @@ import Home from '../views/Home.vue'
 import Cadastro from '../views/Cadastro.vue'
 import Security from '../security/login.vue'
 import DashBoard from '../views/DashBoard.vue'
+import Principal from '../views/Principal.vue'
 
 const routes = [
   {
@@ -22,7 +23,15 @@ const routes = [
   {
     path: '/dashboard',
     name: 'Dashboard',
-    component: DashBoard
+    component: DashBoard,
+    redirect: { name: 'Principal', params: { name: 'Principal' } },
+    children: [
+      {
+        path: '/principal',
+        name: 'Principal',
+        component: Principal
+      }
+    ]
   }
 ]
 

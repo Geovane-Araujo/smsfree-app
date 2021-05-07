@@ -1,11 +1,11 @@
 <template>
-  <div class="center login">
-    <div class="center cardLogin">
-      <div class="container">
-        <div class="center">
+  <div class="smscenter login">
+    <div class="smscenter cardLogin">
+      <div class="smscontainer">
+        <div class="smscenter">
           <img src="../assets/img/avatar.png" alt="">
         </div>
-        <h1 class="center">Login</h1>
+        <h1 class="smscenter">Login</h1>
         <md-field>
           <label>Email ID</label>
           <md-input md-counter="70"></md-input>
@@ -42,7 +42,7 @@ export default {
   background-color: azure;
   border-radius: 20px;
 }
-.container{
+.smscontainer{
   padding: 10px;
   width: 80%;
 }

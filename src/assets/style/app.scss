@@ -1,6 +1,6 @@
 @mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
   &::-webkit-scrollbar {
-    width:  $size;
+    width:  5px;
     height: $size;
   }
 
@@ -12,7 +12,7 @@
     background: $background-color;
   }
 }
-.center{
+.smscenter{
   display: flex;
   flex-direction: row;
   justify-content: center;

@@ -7,7 +7,6 @@
 <style lang="scss">
 @import "./assets/style/app.scss";
 body{
-  height: 100vh;
   @include scrollbars(10px, pink, #e7c8f0);
   animation: color 7s infinite;
 }

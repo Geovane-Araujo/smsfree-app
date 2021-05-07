@@ -1,11 +1,11 @@
 <template>
-  <div class="center login">
-    <div class="center cardLogin">
+  <div class="smscenter login">
+    <div class="smscenter cardLogin">
       <div class="container">
-        <div class="center">
+        <div class="smscenter">
           <img src="../assets/img/cadastro.png" alt="">
         </div>
-        <h1 class="center">Cadastro</h1>
+        <h1 class="smscenter">Cadastro</h1>
         <md-field>
           <label>Nome</label>
           <md-input md-counter="70"></md-input>
