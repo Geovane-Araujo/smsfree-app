@@ -14,15 +14,33 @@
           <div class="card-left">
             <div class="sts">
               <div class="row">
-                <div class="col-sm-4">
-                  <h2>Olá Geovane Araújo...</h2>
+                <div class="col-sm-5">
+                  <h2>Olá {{ form.nome }}</h2>
                   <div style="margin-top:50px" class="col sm-12">
-                    <h4>Token</h4>
-                    <p>s5d4s5sdsadasdhg===</p>
+                    <h4>Token da Api</h4>
+                    <div class="p-flex">
+                      <Textarea v-model="form.token" :autoResize="true" rows="8" cols="50" />
+                    </div>
                   </div>
                 </div>
-                <div class="smsrigt col-sm-8">
+                <div class="smsrigt col-sm-7">
                   <img src="../assets/img/aha.png" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card-left">
+            <div class="sts">
+              <div class="row">
+                <div class="col-sm-5">
+                  <h2>Olá {{ form.nome }}</h2>
+                  <div style="margin-top:50px" class="col sm-12">
+                    <h4>Exemplos de Uso</h4>
+                  </div>
                 </div>
               </div>
             </div>
@@ -35,9 +53,24 @@
 
 <script>
 import Button from 'primevue/button'
+import Textarea from 'primevue/textarea'
 export default {
+  data () {
+    return {
+      form: {
+        nome: '',
+        login: '',
+        token: ''
+      }
+    }
+  },
+  mounted () {
+    this.form.nome = localStorage.getItem('nome')
+    this.form.token = localStorage.getItem('token')
+  },
   components: {
-    Button
+    Button,
+    Textarea
   }
 }
 </script>

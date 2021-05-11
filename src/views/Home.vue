@@ -40,7 +40,7 @@ export default {
       })
     },
     login () {
-      this.$router.push('dashboard')
+      this.$router.push('login')
     },
     cadastro () {
       this.$router.push('cadastro')

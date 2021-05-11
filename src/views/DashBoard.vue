@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="row">
-      <div class=" col-sm-1">
+    <div>
+      <!-- <div class=" col-sm-1">
         <div class="side">
           <div class="smscenter sms">
             <img src="../assets/img/sms.png" alt="">
@@ -22,8 +22,8 @@
             </div>
           </router-link>
         </div>
-      </div>
-      <div class="col-sm-11">
+      </div> -->
+      <div class="col-sm-12">
         <div class="content-page">
           <router-view/>
         </div>
