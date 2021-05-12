@@ -39,13 +39,14 @@
                 <div class="col-sm-12">
                   <h2>Ultimos 50 Torpedos Enviados</h2>
                   <div style="margin-top:50px" class="col sm-12">
-                    <md-table v-model="users" md-sort="name" md-sort-order="asc" md-card>
+                    <md-table v-model="smss" md-sort="name" md-sort-order="asc" md-card>
 
                       <md-table-row slot="md-table-row" slot-scope="{ item }">
                         <md-table-cell md-label="ID" md-numeric>{{ item.id }}</md-table-cell>
-                        <md-table-cell md-label="Data" md-sort-by="name">{{ item.name }}</md-table-cell>
-                        <md-table-cell md-label="Destinatário" md-sort-by="email">{{ item.email }}</md-table-cell>
-                        <md-table-cell md-label="Mensagem" md-sort-by="gender">{{ item.gender }}</md-table-cell>
+                        <md-table-cell md-label="Data Agendamento" md-sort-by="dataagendamento">{{ item.dataagendamento }}</md-table-cell>
+                        <md-table-cell md-label="Data Envio" md-sort-by="dataenvio">{{ item.dataenvio }}</md-table-cell>
+                        <md-table-cell md-label="Mensagem" md-sort-by="mensagem">{{ item.mensagem }}</md-table-cell>
+                        <md-table-cell md-label="Quantidade" md-sort-by="quantidade">{{ item.quantidade }}</md-table-cell>
                       </md-table-row>
                     </md-table>
                   </div>
@@ -62,6 +63,7 @@
 <script>
 import Button from 'primevue/button'
 import Textarea from 'primevue/textarea'
+import axios from 'axios'
 export default {
   data () {
     return {
@@ -70,48 +72,26 @@ export default {
         login: '',
         token: ''
       },
-      users: [
-        {
-          id: 1,
-          name: 'Shawna Dubbin',
-          email: 'sdubbin0@geocities.com',
-          gender: 'Male',
-          title: 'Assistant Media Planner'
-        },
-        {
-          id: 2,
-          name: 'Odette Demageard',
-          email: 'odemageard1@spotify.com',
-          gender: 'Female',
-          title: 'Account Coordinator'
-        },
-        {
-          id: 3,
-          name: 'Lonnie Izkovitz',
-          email: 'lizkovitz3@youtu.be',
-          gender: 'Female',
-          title: 'Operator'
-        },
-        {
-          id: 4,
-          name: 'Thatcher Stave',
-          email: 'tstave4@reference.com',
-          gender: 'Male',
-          title: 'Software Test Engineer III'
-        },
-        {
-          id: 5,
-          name: 'Clarinda Marieton',
-          email: 'cmarietonh@theatlantic.com',
-          gender: 'Female',
-          title: 'Paralegal'
-        }
-      ]
+      smss: []
     }
   },
   mounted () {
     this.form.nome = localStorage.getItem('nome')
     this.form.token = localStorage.getItem('token')
+    this.getSmss()
+  },
+  methods: {
+    async getSmss () {
+      await axios.get('http://localhost:8088/sms/v1/getSmss', { headers: { Authorization: this.form.token } }).then(res => {
+        if (res.data.ret === 'success') {
+          this.smss = res.data.obj
+        } else {
+          alert(res.data.motivo)
+        }
+      }).catch(err => {
+        alert(err)
+      })
+    }
   },
   components: {
     Button,
