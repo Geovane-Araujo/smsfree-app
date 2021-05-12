@@ -2,7 +2,7 @@
   <div class="principal">
     <div style="margin-top: 10px" class="p-d-flex p-jc-between">
       <div>
-        <H1>DashBoard</H1>
+        <H1>SMS Free</H1>
       </div>
       <div>
         <Button label="Download Android App" icon="pi pi-android" iconPos="left" />
@@ -36,10 +36,18 @@
           <div class="card-left">
             <div class="sts">
               <div class="row">
-                <div class="col-sm-5">
-                  <h2>Olá {{ form.nome }}</h2>
+                <div class="col-sm-12">
+                  <h2>Ultimos 50 Torpedos Enviados</h2>
                   <div style="margin-top:50px" class="col sm-12">
-                    <h4>Exemplos de Uso</h4>
+                    <md-table v-model="users" md-sort="name" md-sort-order="asc" md-card>
+
+                      <md-table-row slot="md-table-row" slot-scope="{ item }">
+                        <md-table-cell md-label="ID" md-numeric>{{ item.id }}</md-table-cell>
+                        <md-table-cell md-label="Data" md-sort-by="name">{{ item.name }}</md-table-cell>
+                        <md-table-cell md-label="Destinatário" md-sort-by="email">{{ item.email }}</md-table-cell>
+                        <md-table-cell md-label="Mensagem" md-sort-by="gender">{{ item.gender }}</md-table-cell>
+                      </md-table-row>
+                    </md-table>
                   </div>
                 </div>
               </div>
@@ -61,7 +69,44 @@ export default {
         nome: '',
         login: '',
         token: ''
-      }
+      },
+      users: [
+        {
+          id: 1,
+          name: 'Shawna Dubbin',
+          email: 'sdubbin0@geocities.com',
+          gender: 'Male',
+          title: 'Assistant Media Planner'
+        },
+        {
+          id: 2,
+          name: 'Odette Demageard',
+          email: 'odemageard1@spotify.com',
+          gender: 'Female',
+          title: 'Account Coordinator'
+        },
+        {
+          id: 3,
+          name: 'Lonnie Izkovitz',
+          email: 'lizkovitz3@youtu.be',
+          gender: 'Female',
+          title: 'Operator'
+        },
+        {
+          id: 4,
+          name: 'Thatcher Stave',
+          email: 'tstave4@reference.com',
+          gender: 'Male',
+          title: 'Software Test Engineer III'
+        },
+        {
+          id: 5,
+          name: 'Clarinda Marieton',
+          email: 'cmarietonh@theatlantic.com',
+          gender: 'Female',
+          title: 'Paralegal'
+        }
+      ]
     }
   },
   mounted () {
