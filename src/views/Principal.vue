@@ -19,7 +19,7 @@
                   <div style="margin-top:50px" class="col sm-12">
                     <h4>Token da Api</h4>
                     <div class="p-flex">
-                      <Textarea v-model="form.token" :autoResize="true" rows="8" cols="50" />
+                      <p>{{ form.token }}</p>
                     </div>
                   </div>
                 </div>
@@ -62,7 +62,6 @@
 
 <script>
 import Button from 'primevue/button'
-import Textarea from 'primevue/textarea'
 import axios from 'axios'
 export default {
   data () {
@@ -94,8 +93,7 @@ export default {
     }
   },
   components: {
-    Button,
-    Textarea
+    Button
   }
 }
 </script>
