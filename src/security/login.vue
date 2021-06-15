@@ -15,8 +15,8 @@
           <md-input v-model="form.senha" type="password"></md-input>
         </md-field>
         <div class="p-flex">
-          <Button @click="save" label="Entrar" style="width:20rem" class="p-mr-2 p-mb-2" />
-          <Button label="Retornar" style="width:20rem" class="p-button-raised p-button-text" />
+          <Button @click="save" label="Entrar" style="width:100%" class="p-mr-2 p-mb-2" />
+          <Button label="Retornar" style="width:100%" class="p-button-raised p-button-text" />
         </div>
       </div>
     </div>
@@ -26,6 +26,7 @@
 <script>
 import Button from 'primevue/button'
 import axios from 'axios'
+import http from '../router/http'
 export default {
   data () {
     return {
@@ -40,7 +41,7 @@ export default {
   },
   methods: {
     async save () {
-      await axios.post('http://localhost:8088/sms/v1/login', this.form).then(res => {
+      await axios.post(http.url + 'login', this.form).then(res => {
         if (res.data.ret === 'success') {
           if (res.data.ret === 'success') {
             localStorage.setItem('token', res.data.obj.token)

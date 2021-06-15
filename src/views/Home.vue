@@ -7,7 +7,7 @@
     <section>
       <div>
         <div class="nav">
-          <h1>SMS <spam style="color: #622774">Free</spam></h1>
+          <h1>SMS <span style="color: #622774">Free</span></h1>
           <p id="par">Pra que pagar uma api se você pode usar os torpedos gratuitos de sua operadora para enviar mensagens promocionais</p>
         </div>
       </div>
@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     pipe () {
-      const text = document.getElementById('par').innerHTML.split('')
+      var text = document.getElementById('par').innerHTML.split('')
       document.getElementById('par').innerHTML = ''
       var i = 0
       text.forEach(a => {

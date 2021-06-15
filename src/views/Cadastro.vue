@@ -18,8 +18,8 @@
           <label>Senha</label>
           <md-input v-model="form.senha" type="password"></md-input>
         </md-field>
-        <div class="p-flex">
-          <Button @click="save" label="Cadastre-se" style="width:20rem" class="p-mr-2 p-mb-2" />
+        <div style="flex: 100%;">
+          <Button @click="save" label="Cadastre-se" style="width:100%" class="p-d-flex" />
         </div>
       </div>
     </div>
@@ -29,6 +29,7 @@
 <script>
 import Button from 'primevue/button'
 import axios from 'axios'
+import http from '../router/http'
 export default {
   data () {
     return {
@@ -45,7 +46,8 @@ export default {
   },
   methods: {
     async save () {
-      await axios.post('http://localhost:8088/sms/v1/users', this.form).then(res => {
+      console.log(http.url)
+      await axios.post(http.url + 'users', this.form).then(res => {
         if (res.data.ret === 'success') {
           this.$router.push('login')
         } else {

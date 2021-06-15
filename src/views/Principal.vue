@@ -63,6 +63,7 @@
 <script>
 import Button from 'primevue/button'
 import axios from 'axios'
+import http from '../router/http'
 export default {
   data () {
     return {
@@ -81,7 +82,7 @@ export default {
   },
   methods: {
     async getSmss () {
-      await axios.get('http://localhost:8088/sms/v1/getSmss', { headers: { Authorization: this.form.token } }).then(res => {
+      await axios.get(http.url + 'getsmss', { headers: { Authorization: this.form.token } }).then(res => {
         if (res.data.ret === 'success') {
           this.smss = res.data.obj
         } else {
