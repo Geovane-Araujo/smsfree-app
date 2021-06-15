@@ -34,6 +34,9 @@ export default {
   data () {
     return {
       form: {
+        add: true,
+        edit: false,
+        dele: false,
         id: '',
         nome: '',
         login: '',
