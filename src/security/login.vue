@@ -43,15 +43,11 @@ export default {
     async save () {
       await axios.post(http.url + 'login', this.form).then(res => {
         if (res.data.ret === 'success') {
-          if (res.data.ret === 'success') {
-            localStorage.setItem('token', res.data.obj.token)
-            localStorage.setItem('nome', res.data.obj.nome)
-            this.$router.push('dashboard')
-          } else {
-            alert('Login ou senha invalidos')
-          }
+          localStorage.setItem('token', res.data.obj.token)
+          localStorage.setItem('nome', res.data.obj.nome)
+          this.$router.push('dashboard')
         } else {
-          alert(res.data.motivo)
+          alert('Login ou senha invalidos')
         }
       }).catch(err => {
         alert(err)

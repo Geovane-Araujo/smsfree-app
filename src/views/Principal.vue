@@ -78,11 +78,12 @@ export default {
   mounted () {
     this.form.nome = localStorage.getItem('nome')
     this.form.token = localStorage.getItem('token')
+    console.log(this.form)
     this.getSmss()
   },
   methods: {
     async getSmss () {
-      await axios.get(http.url + 'getsmss', { headers: { Authorization: this.form.token } }).then(res => {
+      await axios.get(http.url + 'getsmss', { headers: { Authorization: 'Bearer ' + this.form.token } }).then(res => {
         if (res.data.ret === 'success') {
           this.smss = res.data.obj
         } else {
