@@ -1,5 +1,5 @@
 export default async (to, from, next) => {
-  document.title = 'Sms Free'
+  document.title = 'Send SMS'
 
   if (to.name === 'Home') {
     next()

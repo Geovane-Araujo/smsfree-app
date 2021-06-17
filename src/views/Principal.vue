@@ -2,10 +2,11 @@
   <div class="principal">
     <div style="margin-top: 10px" class="p-d-flex p-jc-between">
       <div>
-        <H1>SMS Free</H1>
+        <H1>Send SMS</H1>
       </div>
       <div>
-        <Button label="Download Android App" icon="pi pi-android" iconPos="left" />
+        <Button label="Documentação" @click="openDocumentation" icon="pi pi-file-o" iconPos="left" style="margin-right: 10px;" />
+        <Button label="Download Android App" @click="openDownload"  icon="pi pi-android" iconPos="left" />
       </div>
     </div>
     <div class="principal">
@@ -43,10 +44,10 @@
 
                       <md-table-row slot="md-table-row" slot-scope="{ item }">
                         <md-table-cell md-label="ID" md-numeric>{{ item.id }}</md-table-cell>
-                        <md-table-cell md-label="Data Agendamento" md-sort-by="dataagendamento">{{ item.dataagendamento }}</md-table-cell>
-                        <md-table-cell md-label="Data Envio" md-sort-by="dataenvio">{{ item.dataenvio }}</md-table-cell>
                         <md-table-cell md-label="Mensagem" md-sort-by="mensagem">{{ item.mensagem }}</md-table-cell>
+                        <md-table-cell md-label="Data Agendamento" md-sort-by="dataagendamento">{{ item.dataagendamento }}</md-table-cell>
                         <md-table-cell md-label="Quantidade" md-sort-by="quantidade">{{ item.quantidade }}</md-table-cell>
+                        <md-table-cell md-label="Status" md-sort-by="quantidade">{{ item.status }}</md-table-cell>
                       </md-table-row>
                     </md-table>
                   </div>
@@ -60,44 +61,7 @@
   </div>
 </template>
 
-<script>
-import Button from 'primevue/button'
-import axios from 'axios'
-import http from '../router/http'
-export default {
-  data () {
-    return {
-      form: {
-        nome: '',
-        login: '',
-        token: ''
-      },
-      smss: []
-    }
-  },
-  mounted () {
-    this.form.nome = localStorage.getItem('nome')
-    this.form.token = localStorage.getItem('token')
-    console.log(this.form)
-    this.getSmss()
-  },
-  methods: {
-    async getSmss () {
-      await axios.get(http.url + 'getsmss', { headers: { Authorization: 'Bearer ' + this.form.token } }).then(res => {
-        if (res.data.ret === 'success') {
-          this.smss = res.data.obj
-        } else {
-          alert(res.data.motivo)
-        }
-      }).catch(err => {
-        alert(err)
-      })
-    }
-  },
-  components: {
-    Button
-  }
-}
+<script src="./Principal.js">
 </script>
 <style lang="scss" scoped>
 @import "../assets/style/app.scss";

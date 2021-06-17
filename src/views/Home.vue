@@ -7,7 +7,7 @@
     <section>
       <div>
         <div class="nav">
-          <h1>SMS <span style="color: #622774">Free</span></h1>
+          <h1>Send <span style="color: #622774">SMS</span></h1>
           <p id="par">Pra que pagar uma api se você pode usar os torpedos gratuitos de sua operadora para enviar mensagens promocionais</p>
         </div>
       </div>
