@@ -15,6 +15,7 @@ body{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
+  font-size: 12px;
 }
 
 @keyframes color {

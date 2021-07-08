@@ -23,6 +23,24 @@
                       <p>{{ form.token }}</p>
                     </div>
                   </div>
+                  <div class="col-sm-9">
+                    <b-form-group id="input-group-1" label="Telefone:" label-for="input-1">
+                      <b-form-input id="input-1"  v-model="torpedos.destinatarios[0].fone"
+                        type="text"
+                        required
+                      ></b-form-input>
+                    </b-form-group>
+                  </div>
+                  <div class="col-sm-9">
+                    <b-form-group id="input-group-1" label="Mensagem:" label-for="input-1">
+                      <b-form-textarea rows="7" id="input-1" max-rows="7"  v-model="torpedos.mensagem"
+                        type="text"
+                        required
+                        no-resize
+                      ></b-form-textarea>
+                    </b-form-group>
+                  </div>
+                  <b-col lg="4" class="pb-2"><b-button @click="sendSmss" size="sm">Enviar</b-button></b-col>
                 </div>
                 <div class="smsrigt col-sm-7">
                   <img src="../assets/img/aha.png" alt="">
@@ -40,9 +58,20 @@
                 <div class="col-sm-12">
                   <h2>Ultimos 50 Torpedos Enviados</h2>
                   <div style="margin-top:50px" class="col sm-12">
-                    <md-table v-model="smss" md-sort="name" md-sort-order="asc" md-card>
+                    <md-table v-model="smss" md-sort="name" md-sort-order="asc" md-card @md-selected="onSelect">
+                      <md-table-toolbar>
+                        <h1 class="md-title">Torpedos Enviados</h1>
+                      </md-table-toolbar>
+                      <md-table-toolbar slot="md-table-alternate-header" slot-scope="{ count }">
+                        <div class="md-toolbar-section-start">{{ getAlternateLabel(count) }}</div>
 
-                      <md-table-row slot="md-table-row" slot-scope="{ item }">
+                        <div class="md-toolbar-section-end">
+                          <md-button @click="deleteSmss()" class="md-icon-button">
+                            <i class="pi pi-trash" ></i>
+                          </md-button>
+                        </div>
+                      </md-table-toolbar>
+                      <md-table-row slot="md-table-row" slot-scope="{ item }" md-selectable="multiple" md-auto-select>
                         <md-table-cell md-label="ID" md-numeric>{{ item.id }}</md-table-cell>
                         <md-table-cell md-label="Mensagem" md-sort-by="mensagem">{{ item.mensagem }}</md-table-cell>
                         <md-table-cell md-label="Data Agendamento" md-sort-by="dataagendamento">{{ item.dataagendamento }}</md-table-cell>
