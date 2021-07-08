@@ -2,6 +2,8 @@ import Button from 'primevue/button'
 import axios from 'axios'
 import http from '../router/http'
 import moment from 'moment'
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/vue-loading.css'
 export default {
   data () {
     return {
@@ -21,7 +23,8 @@ export default {
       },
       mensagem: '',
       smss: [],
-      selected: []
+      selected: [],
+      showLoading: false
     }
   },
   mounted () {
@@ -36,17 +39,21 @@ export default {
       console.log(this.selected)
     },
     async getSmss () {
+      this.showLoading = true
       await axios.get(http.url + 'getsmss', { headers: { Authorization: 'Bearer ' + this.form.token } }).then(res => {
         if (res.data.ret === 'success') {
           this.smss = res.data.obj
         } else {
           alert(res.data.motivo)
         }
+        this.showLoading = false
       }).catch(err => {
         alert(err)
+        this.showLoading = false
       })
     },
     async sendSmss () {
+      this.showLoading = true
       await axios.post(http.url + 'torpedos', this.torpedos, { headers: { Authorization: 'Bearer ' + this.form.token } }).then(res => {
         if (res.data.ret === 'success') {
           alert(res.data.obj)
@@ -56,9 +63,11 @@ export default {
         this.getSmss()
       }).catch(err => {
         alert(err)
+        this.showLoading = false
       })
     },
     async deleteSmss () {
+      this.showLoading = true
       await axios.post(http.url + 'delete', this.selected, { headers: { Authorization: 'Bearer ' + this.form.token } }).then(res => {
         if (res.data.ret === 'success') {
           alert(res.data.obj)
@@ -66,8 +75,10 @@ export default {
         } else {
           alert(res.data.motivo)
         }
+        this.showLoading = false
       }).catch(err => {
         alert(err)
+        this.showLoading = false
       })
     },
     getAlternateLabel (count) {
@@ -87,6 +98,7 @@ export default {
     }
   },
   components: {
-    Button
+    Button,
+    Loading
   }
 }

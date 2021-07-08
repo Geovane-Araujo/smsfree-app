@@ -1,5 +1,6 @@
 <template>
   <div class="smscenter login">
+    <loading class="loading" :active="showLoading" :height="45" :width="128" background-color="#c9cdf0" color="#232b70" loader="spinner" :is-full-page="true"/>
     <div class="smscenter cardLogin">
       <div class="smscontainer">
         <div class="smscenter">
@@ -27,30 +28,38 @@
 import Button from 'primevue/button'
 import axios from 'axios'
 import http from '../router/http'
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/vue-loading.css'
 export default {
   data () {
     return {
       form: {
         login: '',
         senha: ''
-      }
+      },
+      showLoading: false
     }
   },
   components: {
-    Button
+    Button,
+    Loading
   },
   methods: {
     async save () {
+      this.showLoading = true
       await axios.post(http.url + 'login', this.form).then(res => {
         if (res.data.ret === 'success') {
           localStorage.setItem('token', res.data.obj.token)
           localStorage.setItem('nome', res.data.obj.nome)
+          this.showLoading = false
           this.$router.push('dashboard')
         } else {
           alert('Login ou senha invalidos')
         }
+        this.showLoading = false
       }).catch(err => {
         alert(err)
+        this.showLoading = false
       })
     }
   }

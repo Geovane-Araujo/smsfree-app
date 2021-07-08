@@ -1,5 +1,6 @@
 <template>
   <div class="principal">
+    <loading class="loading" :active="showLoading" :height="45" :width="128" background-color="#c9cdf0" color="#232b70" loader="spinner" :is-full-page="true"/>
     <div style="margin-top: 10px" class="p-d-flex p-jc-between">
       <div>
         <H1>Send SMS</H1>
