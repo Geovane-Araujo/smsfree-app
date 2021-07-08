@@ -1,5 +1,6 @@
 <template>
   <div class="smscenter login">
+    <loading class="loading" :active="showLoading" :height="45" :width="128" background-color="#c9cdf0" color="#232b70" loader="spinner" :is-full-page="true"/>
     <div class="smscenter cardLogin">
       <div class="container">
         <div class="smscenter">
@@ -30,9 +31,12 @@
 import Button from 'primevue/button'
 import axios from 'axios'
 import http from '../router/http'
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/vue-loading.css'
 export default {
   data () {
     return {
+      showLoading: false,
       form: {
         add: true,
         edit: false,
@@ -45,19 +49,23 @@ export default {
     }
   },
   components: {
-    Button
+    Button,
+    Loading
   },
   methods: {
     async save () {
-      console.log(http.url)
+      this.showLoading = true
       await axios.post(http.url + 'users', this.form).then(res => {
         if (res.data.ret === 'success') {
           this.$router.push('login')
+          this.$toast.add({ severity: 'success', summary: 'Send SMS', detail: 'Conta Liberada, ja pode utilizar', life: 3000 })
         } else {
-          alert(res.data.motivo)
+          this.$toast.add({ severity: 'error', summary: 'Send SMS', detail: res.data.motivo, life: 3000 })
         }
+        this.showLoading = false
       }).catch(err => {
-        alert(err)
+        this.$toast.add({ severity: 'error', summary: 'Send SMS', detail: err, life: 3000 })
+        this.showLoading = false
       })
     }
   }
