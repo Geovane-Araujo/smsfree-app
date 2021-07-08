@@ -52,13 +52,14 @@ export default {
           localStorage.setItem('token', res.data.obj.token)
           localStorage.setItem('nome', res.data.obj.nome)
           this.showLoading = false
+          this.$toast.add({ severity: 'success', summary: 'Send SMS', detail: 'Seja Bem Vindo(a)', life: 3000 })
           this.$router.push('dashboard')
         } else {
-          alert('Login ou senha invalidos')
+          this.$toast.add({ severity: 'error', summary: 'Send SMS', detail: 'Login ou Senha Inválidos', life: 3000 })
         }
         this.showLoading = false
       }).catch(err => {
-        alert(err)
+        this.$toast.add({ severity: 'error', summary: 'Send SMS', detail: err, life: 3000 })
         this.showLoading = false
       })
     }

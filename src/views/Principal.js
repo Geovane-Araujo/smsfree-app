@@ -30,13 +30,11 @@ export default {
   mounted () {
     this.form.nome = localStorage.getItem('nome')
     this.form.token = localStorage.getItem('token')
-    console.log(this.form)
     this.getSmss()
   },
   methods: {
     onSelect (items) {
       this.selected = items
-      console.log(this.selected)
     },
     async getSmss () {
       this.showLoading = true
@@ -44,11 +42,11 @@ export default {
         if (res.data.ret === 'success') {
           this.smss = res.data.obj
         } else {
-          alert(res.data.motivo)
+          this.$toast.add({ severity: 'error', summary: 'Send SMS', detail: res.data.motivo, life: 3000 })
         }
         this.showLoading = false
       }).catch(err => {
-        alert(err)
+        this.$toast.add({ severity: 'error', summary: 'Send SMS', detail: err, life: 3000 })
         this.showLoading = false
       })
     },
@@ -56,13 +54,13 @@ export default {
       this.showLoading = true
       await axios.post(http.url + 'torpedos', this.torpedos, { headers: { Authorization: 'Bearer ' + this.form.token } }).then(res => {
         if (res.data.ret === 'success') {
-          alert(res.data.obj)
+          this.$toast.add({ severity: 'success', summary: 'Send SMS', detail: res.data.obj, life: 3000 })
         } else {
-          alert(res.data.motivo)
+          this.$toast.add({ severity: 'error', summary: 'Send SMS', detail: res.data.motivo, life: 3000 })
         }
         this.getSmss()
       }).catch(err => {
-        alert(err)
+        this.$toast.add({ severity: 'error', summary: 'Send SMS', detail: err, life: 3000 })
         this.showLoading = false
       })
     },
@@ -70,14 +68,14 @@ export default {
       this.showLoading = true
       await axios.post(http.url + 'delete', this.selected, { headers: { Authorization: 'Bearer ' + this.form.token } }).then(res => {
         if (res.data.ret === 'success') {
-          alert(res.data.obj)
+          this.$toast.add({ severity: 'success', summary: 'Send SMS', detail: res.data.obj, life: 3000 })
           this.getSmss()
         } else {
-          alert(res.data.motivo)
+          this.$toast.add({ severity: 'error', summary: 'Send SMS', detail: res.data.motivo, life: 3000 })
         }
         this.showLoading = false
       }).catch(err => {
-        alert(err)
+        this.$toast.add({ severity: 'error', summary: 'Send SMS', detail: err, life: 3000 })
         this.showLoading = false
       })
     },

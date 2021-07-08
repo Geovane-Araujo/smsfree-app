@@ -1,8 +1,17 @@
 <template>
   <div id="app">
     <router-view/>
+    <Toast position="bottom-right" />
   </div>
 </template>
+<script>
+import Toast from 'primevue/toast'
+export default {
+  components: {
+    Toast
+  }
+}
+</script>
 
 <style lang="scss">
 @import "./assets/style/app.scss";

@@ -7,6 +7,7 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import PrimeVue from 'primevue/config'
 import VueMaterial from 'vue-material'
 import VTooltip from 'v-tooltip'
+import ToastService from 'primevue/toastservice'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
 import 'primevue/resources/themes/vela-purple/theme.css'
@@ -21,6 +22,7 @@ Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(VueMaterial)
 Vue.use(VTooltip)
+Vue.use(ToastService)
 Vue.use(PrimeVue, { ripple: true })
 Vue.config.productionTip = false
 
