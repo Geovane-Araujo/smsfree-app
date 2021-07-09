@@ -62,6 +62,7 @@
                     <md-table v-model="smss" md-sort="name" md-sort-order="asc" md-card @md-selected="onSelect">
                       <md-table-toolbar>
                         <h1 class="md-title">Torpedos Enviados</h1>
+                        <b-col lg="1" class="pb-2"><b-button @click="getSmss" size="sm">Atualizar</b-button></b-col>
                       </md-table-toolbar>
                       <md-table-toolbar slot="md-table-alternate-header" slot-scope="{ count }">
                         <div class="md-toolbar-section-start">{{ getAlternateLabel(count) }}</div>
