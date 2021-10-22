@@ -15,12 +15,9 @@ export default {
       torpedos: {
         mensagem: '',
         dataagendamento: moment(new Date()).format('yyyy-MM-DD HH:mm:ss'),
-        destinatarios: [
-          {
-            fone: ''
-          }
-        ]
+        destinatarios: []
       },
+      fones: '',
       mensagem: '',
       smss: [],
       selected: [],
@@ -41,6 +38,7 @@ export default {
       await axios.get(http.url + 'getsmss', { headers: { Authorization: 'Bearer ' + this.form.token } }).then(res => {
         if (res.data.ret === 'success') {
           this.smss = res.data.obj
+          this.torpedos.destinatarios = []
         } else {
           this.$toast.add({ severity: 'error', summary: 'Send SMS', detail: res.data.motivo, life: 3000 })
         }
@@ -52,6 +50,14 @@ export default {
     },
     async sendSmss () {
       this.showLoading = true
+      var splittelefones = this.fones.split(';')
+      splittelefones.forEach(item => {
+        var aux = {
+          fone: item
+        }
+        this.torpedos.destinatarios.push(aux)
+      })
+      console.log(this.torpedos)
       await axios.post(http.url + 'torpedos', this.torpedos, { headers: { Authorization: 'Bearer ' + this.form.token } }).then(res => {
         if (res.data.ret === 'success') {
           this.$toast.add({ severity: 'success', summary: 'Send SMS', detail: res.data.obj, life: 3000 })
@@ -86,7 +92,7 @@ export default {
         plural = 's'
       }
 
-      return `${count} user${plural} selected`
+      return `${count} mensagem${plural} selecionada${plural}`
     },
     openDocumentation () {
       window.open('https://documenter.getpostman.com/view/10653101/TzeWHTg4')

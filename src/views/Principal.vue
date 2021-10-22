@@ -25,8 +25,8 @@
                     </div>
                   </div>
                   <div class="col-sm-9">
-                    <b-form-group id="input-group-1" label="Telefone:" label-for="input-1">
-                      <b-form-input id="input-1"  v-model="torpedos.destinatarios[0].fone"
+                    <b-form-group id="input-group-1" label="Telefone (para mais de 1 separar com ; ponto e virgula):" label-for="input-1">
+                      <b-form-input id="input-1"  v-model="fones"
                         type="text"
                         required
                       ></b-form-input>

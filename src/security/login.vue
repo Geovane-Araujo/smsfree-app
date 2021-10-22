@@ -81,4 +81,9 @@ export default {
   padding: 10px;
   width: 80%;
 }
+@media (max-width: 500px) {
+  .cardLogin{
+    width: 100%;
+  }
+}
 </style>
